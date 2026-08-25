@@ -1,4 +1,18 @@
 {
+  "cs": {
+    "pageTitle": "Služby",
+    "eyebrow": "Co léčíme",
+    "lede": "Každý plán začíná stejným vyšetřením. Liší se zátěž, tempo a protokol — viz níže.",
+    "ctaTitle": "Nejste si jistí, co sedí vašemu případu?",
+    "ctaBtn": "Zeptejte se před objednáním"
+  },
+  "en": {
+    "pageTitle": "Services",
+    "eyebrow": "What we treat",
+    "lede": "Every plan starts with the same assessment. What differs is the loading, pacing, and protocol — set out below.",
+    "ctaTitle": "Not sure which fits your case?",
+    "ctaBtn": "Ask before booking"
+  },
   "services": [
     {
       "slug": "sportovni-zraneni",

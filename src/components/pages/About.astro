@@ -8,10 +8,9 @@ interface Props {
 
 const { lang } = Astro.props;
 const about = aboutData[lang];
-const title = lang === 'cs' ? 'O nás' : 'About';
 ---
 
-<Layout lang={lang} title={title} description={about.intro} route="about">
+<Layout lang={lang} title={about.pageTitle} description={about.intro} route="about">
   <section class="intro">
     <div class="container">
       <span class="eyebrow">{about.eyebrow}</span>
@@ -25,7 +24,7 @@ const title = lang === 'cs' ? 'O nás' : 'About';
   <section class="bio">
     <div class="container bio-grid">
       <div class="bio-photo" role="img" aria-label={about.bio.photoAlt}>
-        <span class="tick">{lang === 'cs' ? 'foto' : 'photo'}</span>
+        <span class="tick">{about.photoLabel}</span>
       </div>
       <div>
         <h2 class="bio-name">{about.bio.name}</h2>
@@ -37,7 +36,7 @@ const title = lang === 'cs' ? 'O nás' : 'About';
 
   <section class="values">
     <div class="container">
-      <h2>{lang === 'cs' ? 'Jak klinika funguje' : 'How the clinic works'}</h2>
+      <h2>{about.valuesTitle}</h2>
       <div class="values-grid">
         {about.values.map((v) => (
           <div class="value">

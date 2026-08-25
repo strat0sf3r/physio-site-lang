@@ -10,10 +10,22 @@
       "body": "Vystudovala jsem manuální terapii a sportovní rehabilitaci a osm let jsem pracovala na ortopedických klinikách, než jsem v roce 2019 otevřela Range. Můj přístup je přímočarý: najít skutečné omezení, léčit ho a dát vám způsob, jak ověřit, že to funguje — obvykle už během prvních dvou sezení."
     },
     "values": [
-      { "title": "Jeden terapeut od začátku do konce", "body": "Na každou návštěvu chodíte za stejným člověkem. Kontinuita je z velké části to, co dělá léčebný plán funkčním." },
-      { "title": "Měřeno, ne odhadováno", "body": "Rozsah pohybu, síla i zátěž se testují a zaznamenávají, takže „lépe“ je číslo, ne pocit." },
-      { "title": "Plán s koncem", "body": "Na začátku budete zhruba vědět, kolik sezení váš případ vyžaduje, a pokud se to změní, plán společně přehodnotíme." }
-    ]
+      {
+        "title": "Jeden terapeut od začátku do konce",
+        "body": "Na každou návštěvu chodíte za stejným člověkem. Kontinuita je z velké části to, co dělá léčebný plán funkčním."
+      },
+      {
+        "title": "Měřeno, ne odhadováno",
+        "body": "Rozsah pohybu, síla i zátěž se testují a zaznamenávají, takže „lépe“ je číslo, ne pocit."
+      },
+      {
+        "title": "Plán s koncem",
+        "body": "Na začátku budete zhruba vědět, kolik sezení váš případ vyžaduje, a pokud se to změní, plán společně přehodnotíme."
+      }
+    ],
+    "pageTitle": "O nás",
+    "photoLabel": "foto",
+    "valuesTitle": "Jak klinika funguje"
   },
   "en": {
     "eyebrow": "About the clinic",
@@ -26,9 +38,21 @@
       "body": "I trained in manual therapy and sports rehabilitation, and spent eight years in orthopaedic clinics before opening Range in 2019. My approach is direct: find the actual restriction, treat it, and give you a way to measure whether it's working — usually within the first two sessions."
     },
     "values": [
-      { "title": "One therapist, start to finish", "body": "You see the same person every visit. Continuity is most of what makes a treatment plan work." },
-      { "title": "Measured, not assumed", "body": "Range of motion, strength, and load are tested and logged, so 'better' is a number, not a feeling." },
-      { "title": "A plan with an end date", "body": "You'll know roughly how many sessions your case takes at the outset, and we'll revisit it if it changes." }
-    ]
+      {
+        "title": "One therapist, start to finish",
+        "body": "You see the same person every visit. Continuity is most of what makes a treatment plan work."
+      },
+      {
+        "title": "Measured, not assumed",
+        "body": "Range of motion, strength, and load are tested and logged, so 'better' is a number, not a feeling."
+      },
+      {
+        "title": "A plan with an end date",
+        "body": "You'll know roughly how many sessions your case takes at the outset, and we'll revisit it if it changes."
+      }
+    ],
+    "pageTitle": "About",
+    "photoLabel": "photo",
+    "valuesTitle": "How the clinic works"
   }
 }

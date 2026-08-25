@@ -14,7 +14,8 @@
     "labelEmail": "E-mail",
     "labelAddress": "Adresa",
     "labelHours": "Otevírací doba",
-    "mapEmbedNote": "Až bude potvrzená finální adresa, doplňte sem mapu Google Maps nebo statický obrázek mapy."
+    "mapEmbedNote": "Až bude potvrzená finální adresa, doplňte sem mapu Google Maps nebo statický obrázek mapy.",
+    "pageTitle": "Kontakt"
   },
   "en": {
     "eyebrow": "Get in touch",
@@ -30,6 +31,7 @@
     "labelEmail": "Email",
     "labelAddress": "Address",
     "labelHours": "Hours",
-    "mapEmbedNote": "Add a Google Maps embed or a static map image here once you have the final address confirmed."
+    "mapEmbedNote": "Add a Google Maps embed or a static map image here once you have the final address confirmed.",
+    "pageTitle": "Contact"
   }
 }

@@ -49,6 +49,7 @@ collections:
             name: "cs"
             widget: "object"
             fields: &home_fields
+              - { label: "Page title (browser tab)", name: "pageTitle", widget: "string" }
               - { label: "Hero eyebrow", name: "heroEyebrow", widget: "string" }
               - { label: "Hero headline", name: "heroHeadline", widget: "string" }
               - { label: "Hero body", name: "heroBody", widget: "text" }
@@ -68,6 +69,9 @@ collections:
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Body", name: "body", widget: "text" }
               - { label: "Services section title", name: "servicesIntro", widget: "string" }
+              - { label: "'See services' button text", name: "servicesCta", widget: "string" }
+              - { label: "'All services' link text", name: "allServicesLink", widget: "string" }
+              - { label: "Closing banner headline", name: "ctaTitle", widget: "string" }
           - label: "English"
             name: "en"
             widget: "object"
@@ -84,9 +88,12 @@ collections:
             name: "cs"
             widget: "object"
             fields: &about_fields
+              - { label: "Page title (browser tab)", name: "pageTitle", widget: "string" }
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Headline", name: "headline", widget: "string" }
               - { label: "Intro", name: "intro", widget: "text" }
+              - { label: "Photo placeholder label", name: "photoLabel", widget: "string" }
+              - { label: "Values section title", name: "valuesTitle", widget: "string" }
               - label: "Therapist bio"
                 name: "bio"
                 widget: "object"
@@ -118,6 +125,7 @@ collections:
             name: "cs"
             widget: "object"
             fields: &contact_fields
+              - { label: "Page title (browser tab)", name: "pageTitle", widget: "string" }
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Headline", name: "headline", widget: "string" }
               - { label: "Intro", name: "intro", widget: "text" }
@@ -148,8 +156,11 @@ collections:
             name: "cs"
             widget: "object"
             fields: &faq_fields
+              - { label: "Page title (browser tab)", name: "pageTitle", widget: "string" }
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Closing banner headline", name: "ctaTitle", widget: "string" }
+              - { label: "Closing banner button text", name: "ctaBtn", widget: "string" }
               - label: "Questions"
                 name: "items"
                 widget: "list"
@@ -168,6 +179,19 @@ collections:
         label: "All Services"
         file: "src/data/services.json"
         fields:
+          - label: "Czech"
+            name: "cs"
+            widget: "object"
+            fields: &services_page_fields
+              - { label: "Page title (browser tab)", name: "pageTitle", widget: "string" }
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Intro text", name: "lede", widget: "text" }
+              - { label: "Closing banner headline", name: "ctaTitle", widget: "string" }
+              - { label: "Closing banner button text", name: "ctaBtn", widget: "string" }
+          - label: "English"
+            name: "en"
+            widget: "object"
+            fields: *services_page_fields
           - label: "Services"
             name: "services"
             widget: "list"

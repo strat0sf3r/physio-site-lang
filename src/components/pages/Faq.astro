@@ -11,14 +11,9 @@ interface Props {
 const { lang } = Astro.props;
 const faq = faqData[lang];
 const contactHref = getRelativeLocaleUrl(lang, routes.contact);
-
-const copy = {
-  cs: { ctaTitle: 'Máte další otázku?', ctaBtn: 'Zeptejte se nás přímo' },
-  en: { ctaTitle: 'Still have a question?', ctaBtn: 'Ask us directly' },
-}[lang];
 ---
 
-<Layout lang={lang} title={lang === 'cs' ? 'Časté dotazy' : 'FAQ'} description={faq.headline} route="faq">
+<Layout lang={lang} title={faq.pageTitle} description={faq.headline} route="faq">
   <section class="intro">
     <div class="container">
       <span class="eyebrow">{faq.eyebrow}</span>
@@ -42,8 +37,8 @@ const copy = {
 
   <section class="cta-band">
     <div class="container cta-inner">
-      <h2>{copy.ctaTitle}</h2>
-      <a class="btn btn-primary" href={contactHref}>{copy.ctaBtn}</a>
+      <h2>{faq.ctaTitle}</h2>
+      <a class="btn btn-primary" href={contactHref}>{faq.ctaBtn}</a>
     </div>
   </section>
 </Layout>

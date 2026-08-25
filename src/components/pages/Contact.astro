@@ -12,7 +12,7 @@ const site = siteData[lang];
 const contact = contactData[lang];
 ---
 
-<Layout lang={lang} title={lang === 'cs' ? 'Kontakt' : 'Contact'} description={contact.intro} route="contact">
+<Layout lang={lang} title={contact.pageTitle} description={contact.intro} route="contact">
   <section class="intro">
     <div class="container">
       <span class="eyebrow">{contact.eyebrow}</span>

@@ -5,9 +5,18 @@
     "heroBody": "Individuální fyzioterapie při úrazech, bolesti a rekonvalescenci po operaci — pořádně vyšetřená, cíleně léčená a při každé návštěvě měřená, abyste pokrok viděli, ne jen cítili.",
     "heroCta": "Objednat vyšetření",
     "stats": [
-      { "value": "12+", "label": "let klinické praxe" },
-      { "value": "0–180°", "label": "rozsah ramene, náš nejčastější případ" },
-      { "value": "6", "label": "sezení v průměru k funkčnímu plánu" }
+      {
+        "value": "12+",
+        "label": "let klinické praxe"
+      },
+      {
+        "value": "0–180°",
+        "label": "rozsah ramene, náš nejčastější případ"
+      },
+      {
+        "value": "6",
+        "label": "sezení v průměru k funkčnímu plánu"
+      }
     ],
     "processTitle": "Jak léčba skutečně začíná",
     "process": [
@@ -27,7 +36,11 @@
         "body": "Rozsah pohybu a sílu opakovaně testujeme, takže pokrok je číslo, které vidíte, ne odhad."
       }
     ],
-    "servicesIntro": "Tři nejčastější důvody, proč lidé přicházejí"
+    "servicesIntro": "Tři nejčastější důvody, proč lidé přicházejí",
+    "pageTitle": "Domů",
+    "servicesCta": "Zobrazit služby",
+    "allServicesLink": "Všechny služby →",
+    "ctaTitle": "Chcete zjistit, co je skutečně omezené?"
   },
   "en": {
     "heroEyebrow": "Prague-based physiotherapy clinic",
@@ -35,9 +48,18 @@
     "heroBody": "One-to-one physiotherapy for injury, pain, and post-surgical recovery — assessed properly, treated deliberately, and measured at every visit so you can see the progress, not just feel it.",
     "heroCta": "Book an assessment",
     "stats": [
-      { "value": "12+", "label": "years in clinical practice" },
-      { "value": "0–180°", "label": "shoulder range, our most common rebuild" },
-      { "value": "6", "label": "average sessions to a working plan" }
+      {
+        "value": "12+",
+        "label": "years in clinical practice"
+      },
+      {
+        "value": "0–180°",
+        "label": "shoulder range, our most common rebuild"
+      },
+      {
+        "value": "6",
+        "label": "average sessions to a working plan"
+      }
     ],
     "processTitle": "How treatment actually starts",
     "process": [
@@ -57,6 +79,10 @@
         "body": "We re-test range and strength at intervals, so progress is a number you can see, not a guess."
       }
     ],
-    "servicesIntro": "Three ways people usually start"
+    "servicesIntro": "Three ways people usually start",
+    "pageTitle": "Home",
+    "servicesCta": "See services",
+    "allServicesLink": "All services →",
+    "ctaTitle": "Ready to find out what's actually restricted?"
   }
 }

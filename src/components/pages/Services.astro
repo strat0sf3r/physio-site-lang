@@ -12,30 +12,14 @@ interface Props {
 const { lang } = Astro.props;
 const services = [...servicesData.services].sort((a, b) => a.order - b.order);
 const contactHref = getRelativeLocaleUrl(lang, routes.contact);
-
-const copy = {
-  cs: {
-    title: 'Služby',
-    eyebrow: 'Co léčíme',
-    lede: 'Každý plán začíná stejným vyšetřením. Liší se zátěž, tempo a protokol — viz níže.',
-    ctaTitle: 'Nejste si jistí, co sedí vašemu případu?',
-    ctaBtn: 'Zeptejte se před objednáním',
-  },
-  en: {
-    title: 'Services',
-    eyebrow: 'What we treat',
-    lede: "Every plan starts with the same assessment. What differs is the loading, pacing, and protocol — set out below.",
-    ctaTitle: 'Not sure which fits your case?',
-    ctaBtn: 'Ask before booking',
-  },
-}[lang];
+const copy = servicesData[lang];
 ---
 
-<Layout lang={lang} title={copy.title} route="services">
+<Layout lang={lang} title={copy.pageTitle} route="services">
   <section class="intro">
     <div class="container">
       <span class="eyebrow">{copy.eyebrow}</span>
-      <h1>{copy.title}</h1>
+      <h1>{copy.pageTitle}</h1>
       <p class="lede">{copy.lede}</p>
     </div>
   </section>

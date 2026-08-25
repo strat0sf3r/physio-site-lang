@@ -17,7 +17,7 @@ const contactHref = getRelativeLocaleUrl(lang, routes.contact);
 const servicesHref = getRelativeLocaleUrl(lang, routes.services);
 ---
 
-<Layout lang={lang} title={lang === 'cs' ? 'Domů' : 'Home'} route="home">
+<Layout lang={lang} title={home.pageTitle} route="home">
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
@@ -26,7 +26,7 @@ const servicesHref = getRelativeLocaleUrl(lang, routes.services);
         <p class="lede">{home.heroBody}</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href={contactHref}>{home.heroCta}</a>
-          <a class="btn btn-ghost" href={servicesHref}>{lang === 'cs' ? 'Zobrazit služby' : 'See services'}</a>
+          <a class="btn btn-ghost" href={servicesHref}>{home.servicesCta}</a>
         </div>
       </div>
       <div class="hero-arc" aria-hidden="true">
@@ -65,7 +65,7 @@ const servicesHref = getRelativeLocaleUrl(lang, routes.services);
     <div class="container">
       <div class="services-head">
         <h2>{home.servicesIntro}</h2>
-        <a href={servicesHref} class="see-all">{lang === 'cs' ? 'Všechny služby →' : 'All services →'}</a>
+        <a href={servicesHref} class="see-all">{home.allServicesLink}</a>
       </div>
       <div class="services-grid">
         {services.map((s) => (
@@ -82,7 +82,7 @@ const servicesHref = getRelativeLocaleUrl(lang, routes.services);
 
   <section class="cta-band">
     <div class="container cta-inner">
-      <h2>{lang === 'cs' ? 'Chcete zjistit, co je skutečně omezené?' : "Ready to find out what's actually restricted?"}</h2>
+      <h2>{home.ctaTitle}</h2>
       <a class="btn btn-primary" href={contactHref}>{home.heroCta}</a>
     </div>
   </section>

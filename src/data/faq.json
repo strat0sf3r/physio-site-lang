@@ -23,7 +23,10 @@
         "q": "Co když se potřebuji odhlásit?",
         "a": "Dejte nám vědět alespoň 24 hodin předem a nic neplatíte. Pozdější zrušení může být zpoplatněno polovinou ceny sezení."
       }
-    ]
+    ],
+    "pageTitle": "Časté dotazy",
+    "ctaTitle": "Máte další otázku?",
+    "ctaBtn": "Zeptejte se nás přímo"
   },
   "en": {
     "eyebrow": "Before you book",
@@ -49,6 +52,9 @@
         "q": "What if I need to cancel?",
         "a": "Give us at least 24 hours' notice and there's no charge. Later cancellations may be billed at half the session rate."
       }
-    ]
+    ],
+    "pageTitle": "FAQ",
+    "ctaTitle": "Still have a question?",
+    "ctaBtn": "Ask us directly"
   }
 }
