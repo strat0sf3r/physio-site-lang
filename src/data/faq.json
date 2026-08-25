@@ -1,0 +1,54 @@
+{
+  "cs": {
+    "eyebrow": "Než se objednáte",
+    "headline": "Časté dotazy",
+    "items": [
+      {
+        "q": "Potřebuji doporučení od lékaře?",
+        "a": "Ne — objednat se můžete přímo. Pokud vaše pojišťovna vyžaduje doporučení kvůli úhradě, přineste ho na první sezení a vyřešíme papírování společně."
+      },
+      {
+        "q": "Kryje to moje pojištění?",
+        "a": "Spolupracujeme s několika českými zdravotními pojišťovnami; soukromé a zahraniční pojištění se obvykle proplácí zpětně. Zeptejte se při objednání a potvrdíme vám konkrétní podmínky vašeho plánu."
+      },
+      {
+        "q": "Co si mám vzít na první sezení?",
+        "a": "Případné zobrazovací nebo operační zprávy, seznam aktuálních léků a oblečení, ve kterém se dobře hýbete — u kyčle, kolena nebo kotníku krátké kalhoty nebo legíny."
+      },
+      {
+        "q": "Kolik sezení budu potřebovat?",
+        "a": "Záleží na konkrétním případu, ale odhad dostanete hned po prvním vyšetření spolu s tím, jak bude vypadat „hotovo“ — obvykle konkrétní cíl v rozsahu pohybu nebo síle."
+      },
+      {
+        "q": "Co když se potřebuji odhlásit?",
+        "a": "Dejte nám vědět alespoň 24 hodin předem a nic neplatíte. Pozdější zrušení může být zpoplatněno polovinou ceny sezení."
+      }
+    ]
+  },
+  "en": {
+    "eyebrow": "Before you book",
+    "headline": "Questions people usually ask",
+    "items": [
+      {
+        "q": "Do I need a referral from a doctor?",
+        "a": "No — you can book directly. If your insurer requires a referral for reimbursement, bring it to your first session and we'll file the paperwork alongside it."
+      },
+      {
+        "q": "Will my insurance cover it?",
+        "a": "We're partnered with several Czech public insurers; private and cross-border insurance is typically reimbursed after the fact. Ask when booking and we'll confirm your specific plan."
+      },
+      {
+        "q": "What should I bring to the first session?",
+        "a": "Any imaging or surgical reports you have, a list of current medications, and clothing you can move in — shorts or leggings if it's a hip, knee, or ankle issue."
+      },
+      {
+        "q": "How many sessions will I need?",
+        "a": "It depends on the case, but you'll get an estimate at the end of your first assessment, along with what 'done' looks like — usually a specific range-of-motion or strength target."
+      },
+      {
+        "q": "What if I need to cancel?",
+        "a": "Give us at least 24 hours' notice and there's no charge. Later cancellations may be billed at half the session rate."
+      }
+    ]
+  }
+}

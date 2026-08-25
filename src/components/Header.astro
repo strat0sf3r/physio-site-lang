@@ -1,0 +1,160 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import siteData from '../data/site.json';
+import { t } from '../i18n/ui.js';
+import { routes } from '../i18n/routes.js';
+
+interface Props {
+  lang: 'cs' | 'en';
+  route?: keyof typeof routes;
+}
+
+const { lang, route = 'home' } = Astro.props;
+const strings = t(lang);
+const otherLang = lang === 'cs' ? 'en' : 'cs';
+
+const navItems = [
+  { key: 'home', label: strings.nav.home },
+  { key: 'about', label: strings.nav.about },
+  { key: 'services', label: strings.nav.services },
+  { key: 'faq', label: strings.nav.faq },
+  { key: 'contact', label: strings.nav.contact },
+] as const;
+
+const switchHref = getRelativeLocaleUrl(otherLang, routes[route]);
+---
+
+<header class="site-header">
+  <div class="container bar">
+    <a href={getRelativeLocaleUrl(lang, routes.home)} class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="26" height="26">
+          <path d="M4 22 A 12 12 0 0 1 28 22" fill="none" stroke="var(--teal)" stroke-width="2"/>
+          <line x1="16" y1="22" x2="26" y2="10" stroke="var(--amber)" stroke-width="2"/>
+        </svg>
+      </span>
+      {siteData.practiceName}
+    </a>
+    <nav aria-label="Primary">
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-list">
+        {strings.menu}
+      </button>
+      <ul id="nav-list">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={getRelativeLocaleUrl(lang, routes[item.key])}
+              aria-current={route === item.key ? 'page' : undefined}
+            >{item.label}</a>
+          </li>
+        ))}
+        <li class="lang-item">
+          <a href={switchHref} class="lang-link" hreflang={otherLang}>{strings.langSwitch}</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href={switchHref} class="lang-link lang-desktop" hreflang={otherLang}>{strings.langSwitch}</a>
+      <a class="btn btn-primary book-link" href={`tel:${siteData.phone}`}>{strings.call} {siteData.phone}</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    z-index: 20;
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-top: 1.1rem;
+    padding-bottom: 1.1rem;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.75rem;
+    margin: 0;
+    padding: 0;
+  }
+  nav a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+  }
+  nav a:hover,
+  nav a[aria-current='page'] {
+    border-bottom-color: var(--amber);
+  }
+  .lang-item { display: none; }
+  .header-actions { display: flex; align-items: center; gap: 1.25rem; }
+  .lang-link {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--slate);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.35em 0.6em;
+  }
+  .lang-link:hover { border-color: var(--teal); color: var(--teal); }
+  .menu-toggle { display: none; }
+  .book-link { white-space: nowrap; }
+
+  @media (max-width: 780px) {
+    .header-actions { display: none; }
+    .menu-toggle {
+      display: inline-flex;
+      background: none;
+      border: 1px solid var(--ink);
+      border-radius: var(--radius);
+      padding: 0.5em 0.9em;
+      font-family: var(--font-body);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    nav ul {
+      display: none;
+      position: absolute;
+      left: 0; right: 0; top: 100%;
+      flex-direction: column;
+      gap: 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      padding: 0.5rem 1.5rem 1.25rem;
+    }
+    nav ul.open { display: flex; }
+    nav ul li { border-top: 1px solid var(--line); }
+    nav ul li a { display: block; padding: 0.85rem 0; }
+    .lang-item { display: block; }
+    .lang-item .lang-link { border: none; padding: 0.85rem 0; display: block; }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const list = document.getElementById('nav-list');
+  toggle?.addEventListener('click', () => {
+    const open = list?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+</script>

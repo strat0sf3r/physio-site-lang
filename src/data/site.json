@@ -1,0 +1,14 @@
+{
+  "practiceName": "Range Physiotherapy",
+  "phone": "+420 222 123 456",
+  "email": "hello@rangephysio.cz",
+  "address": "Vinohradská 42, 120 00 Praha 2",
+  "cs": {
+    "tagline": "Klinická fyzioterapie pro ty, kdo chtějí zpět svůj plný rozsah pohybu — a jasný plán, jak si ho udržet.",
+    "hours": "Po–Pá, 8:00–19:00\nSo po domluvě"
+  },
+  "en": {
+    "tagline": "Clinical physiotherapy for people who want their full range of motion back — and a clear plan to keep it.",
+    "hours": "Mon–Fri, 8:00–19:00\nSat by appointment"
+  }
+}

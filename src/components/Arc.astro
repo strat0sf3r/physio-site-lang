@@ -1,0 +1,85 @@
+---
+// A goniometer-style arc with degree ticks — the instrument a physiotherapist
+// uses to measure joint range of motion. Used as the site's recurring
+// signature device: large and ambient in the hero, small as section dividers.
+interface Props {
+  size?: number;
+  from?: number;   // start angle in degrees
+  to?: number;     // end angle in degrees
+  stroke?: string;
+  class?: string;
+  label?: string;  // e.g. "0°–180°"
+}
+
+const {
+  size = 480,
+  from = 180,
+  to = 0,
+  stroke = 'var(--teal)',
+  class: className = '',
+  label,
+} = Astro.props;
+
+const cx = size / 2;
+const cy = size / 2;
+const r = size * 0.42;
+
+function point(angleDeg: number) {
+  const rad = (angleDeg * Math.PI) / 180;
+  return { x: cx + r * Math.cos(rad), y: cy - r * Math.sin(rad) };
+}
+
+const start = point(from);
+const end = point(to);
+const largeArc = Math.abs(from - to) > 180 ? 1 : 0;
+const sweep = from > to ? 1 : 0;
+
+const ticks = [];
+for (let a = Math.min(from, to); a <= Math.max(from, to); a += 15) {
+  const major = a % 45 === 0;
+  const p1 = point(a);
+  const p2r = r - (major ? 18 : 10);
+  const rad = (a * Math.PI) / 180;
+  const p2 = { x: cx + p2r * Math.cos(rad), y: cy - p2r * Math.sin(rad) };
+  ticks.push({ p1, p2, major });
+}
+---
+
+<svg
+  class={`arc-svg ${className}`}
+  viewBox={`0 0 ${size} ${size}`}
+  xmlns="http://www.w3.org/2000/svg"
+  role="presentation"
+  aria-hidden="true"
+>
+  <path
+    d={`M ${start.x} ${start.y} A ${r} ${r} 0 ${largeArc} ${sweep} ${end.x} ${end.y}`}
+    fill="none"
+    stroke={stroke}
+    stroke-width="1.5"
+    opacity="0.55"
+  />
+  {ticks.map((t) => (
+    <line
+      x1={t.p1.x} y1={t.p1.y}
+      x2={t.p2.x} y2={t.p2.y}
+      stroke={stroke}
+      stroke-width={t.major ? 1.5 : 1}
+      opacity={t.major ? 0.7 : 0.35}
+    />
+  ))}
+  {label && (
+    <text
+      x={cx}
+      y={cy + r + 34}
+      text-anchor="middle"
+      fill="var(--amber)"
+      font-family="var(--font-mono)"
+      font-size="15"
+    >{label}</text>
+  )}
+</svg>
+
+<style>
+  .arc-svg { width: 100%; height: auto; overflow: visible; }
+</style>

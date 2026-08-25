@@ -1,0 +1,17 @@
+# Preview image — runs an actual production build (astro build) and serves
+# it with astro preview. Use this to sanity-check what you'd deploy, as
+# opposed to the Dockerfile's live dev server.
+FROM node:22-slim
+
+WORKDIR /app
+
+COPY package.json package-lock.json* ./
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+EXPOSE 4321
+
+CMD ["npm", "run", "preview", "--", "--host", "0.0.0.0"]

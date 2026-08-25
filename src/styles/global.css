@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Palette — named for what they are, not what they mean */
+  --paper: #EAEDE6;      /* pale sage linen — page background */
+  --paper-raised: #F3F5EF; /* card / raised surface */
+  --ink: #1D2521;         /* charcoal-green — primary text */
+  --slate: #62726B;       /* muted secondary text */
+  --teal: #2C5754;        /* deep clinical teal — brand / links */
+  --teal-deep: #1E403D;   /* hover state */
+  --amber: #D98A2B;       /* goniometer amber — measurement accent, used sparingly */
+  --line: #C9D0C6;        /* hairline rule */
+
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --measure: 62ch;
+  --radius: 3px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background: var(--paper);
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a {
+  color: var(--teal);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--teal-deep); }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  color: var(--ink);
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 4.2rem); font-style: italic; letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); }
+h3 { font-size: 1.25rem; font-weight: 600; font-family: var(--font-body); }
+
+p { margin: 0 0 1.1em; max-width: var(--measure); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+section { padding: 5.5rem 0; }
+@media (max-width: 640px) { section { padding: 3.25rem 0; } }
+
+.rule {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85em 1.5em;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.btn-primary {
+  background: var(--teal);
+  color: var(--paper);
+}
+.btn-primary:hover { background: var(--teal-deep); color: var(--paper); }
+.btn-ghost {
+  background: transparent;
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+/* Degree tick — the recurring signature mark, used wherever a numbered
+   marker would otherwise appear. A physio measures recovery in degrees
+   of range, not in list numbers. */
+.tick {
+  font-family: var(--font-mono);
+  color: var(--amber);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Focus visibility */
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

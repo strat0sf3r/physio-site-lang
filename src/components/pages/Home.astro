@@ -1,0 +1,192 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Arc from '../Arc.astro';
+import homeData from '../../data/home.json';
+import servicesData from '../../data/services.json';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { routes } from '../../i18n/routes.js';
+
+interface Props {
+  lang: 'cs' | 'en';
+}
+
+const { lang } = Astro.props;
+const home = homeData[lang];
+const services = [...servicesData.services].sort((a, b) => a.order - b.order);
+const contactHref = getRelativeLocaleUrl(lang, routes.contact);
+const servicesHref = getRelativeLocaleUrl(lang, routes.services);
+---
+
+<Layout lang={lang} title={lang === 'cs' ? 'Domů' : 'Home'} route="home">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">{home.heroEyebrow}</span>
+        <h1>{home.heroHeadline}</h1>
+        <p class="lede">{home.heroBody}</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={contactHref}>{home.heroCta}</a>
+          <a class="btn btn-ghost" href={servicesHref}>{lang === 'cs' ? 'Zobrazit služby' : 'See services'}</a>
+        </div>
+      </div>
+      <div class="hero-arc" aria-hidden="true">
+        <Arc size={440} from={180} to={0} label="0°–180°" />
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container stats-grid">
+      {home.stats.map((s) => (
+        <div class="stat">
+          <div class="stat-value">{s.value}</div>
+          <div class="stat-label">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="process">
+    <div class="container">
+      <h2>{home.processTitle}</h2>
+      <div class="process-grid">
+        {home.process.map((step) => (
+          <div class="step">
+            <div class="tick step-angle">{step.angle}</div>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="services-preview">
+    <div class="container">
+      <div class="services-head">
+        <h2>{home.servicesIntro}</h2>
+        <a href={servicesHref} class="see-all">{lang === 'cs' ? 'Všechny služby →' : 'All services →'}</a>
+      </div>
+      <div class="services-grid">
+        {services.map((s) => (
+          <a class="service-card" href={servicesHref}>
+            <Arc size={120} from={180} to={180 - s.angleTo} label={`0°–${s.angleTo}°`} />
+            <h3>{s[lang].title}</h3>
+            <p>{s[lang].summary}</p>
+            <span class="tick">{s.duration[lang]}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <h2>{lang === 'cs' ? 'Chcete zjistit, co je skutečně omezené?' : "Ready to find out what's actually restricted?"}</h2>
+      <a class="btn btn-primary" href={contactHref}>{home.heroCta}</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 2rem;
+  }
+  .lede { font-size: 1.15rem; color: var(--slate); }
+  .hero-actions { display: flex; gap: 1rem; margin-top: 1.75rem; flex-wrap: wrap; }
+  .hero-arc { max-width: 440px; margin: 0 auto; }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-arc { order: -1; max-width: 280px; }
+  }
+
+  .stats { padding-top: 0; padding-bottom: 0; }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stat {
+    padding: 2rem 1rem;
+    text-align: center;
+    border-left: 1px solid var(--line);
+  }
+  .stat:first-child { border-left: none; }
+  .stat-value {
+    font-family: var(--font-mono);
+    color: var(--teal);
+    font-size: 1.9rem;
+  }
+  .stat-label { color: var(--slate); font-size: 0.85rem; margin-top: 0.35rem; }
+  @media (max-width: 640px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat { border-left: none; border-top: 1px solid var(--line); }
+    .stat:first-child { border-top: none; }
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+  }
+  .step-angle {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  @media (max-width: 780px) { .process-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+  .services-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .see-all { font-size: 0.9rem; font-weight: 600; white-space: nowrap; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .service-card {
+    display: block;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.15s ease;
+  }
+  .service-card:hover { border-color: var(--teal); }
+  .service-card :global(.arc-svg) { width: 80px; margin-bottom: 0.75rem; }
+  .service-card p { font-size: 0.95rem; color: var(--slate); margin-bottom: 0.75rem; }
+  @media (max-width: 780px) { .services-grid { grid-template-columns: 1fr; } }
+
+  .cta-band {
+    background: var(--teal);
+    color: var(--paper);
+  }
+  .cta-band h2 { color: var(--paper); margin: 0; }
+  .cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .cta-band :global(.btn-primary) {
+    background: var(--amber);
+    color: var(--ink);
+  }
+  .cta-band :global(.btn-primary:hover) { background: #C17A22; }
+</style>

@@ -1,0 +1,120 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import siteData from '../../data/site.json';
+import contactData from '../../data/contact.json';
+
+interface Props {
+  lang: 'cs' | 'en';
+}
+
+const { lang } = Astro.props;
+const site = siteData[lang];
+const contact = contactData[lang];
+---
+
+<Layout lang={lang} title={lang === 'cs' ? 'Kontakt' : 'Contact'} description={contact.intro} route="contact">
+  <section class="intro">
+    <div class="container">
+      <span class="eyebrow">{contact.eyebrow}</span>
+      <h1>{contact.headline}</h1>
+      <p class="lede">{contact.intro}</p>
+    </div>
+  </section>
+
+  <section class="contact-grid">
+    <div class="container grid">
+      <form class="form" action={contactData.formEndpoint} method="POST">
+        <label>
+          {contact.formName}
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          {contact.formEmail}
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          {contact.formPhone}
+          <input type="tel" name="phone" />
+        </label>
+        <label>
+          {contact.formMessage}
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">{contact.formSubmit}</button>
+        <p class="fine">{contact.formNote}</p>
+      </form>
+
+      <aside class="details">
+        <div class="detail-block">
+          <span class="tick">{contact.labelPhone}</span>
+          <p><a href={`tel:${siteData.phone}`}>{siteData.phone}</a></p>
+        </div>
+        <div class="detail-block">
+          <span class="tick">{contact.labelEmail}</span>
+          <p><a href={`mailto:${siteData.email}`}>{siteData.email}</a></p>
+        </div>
+        <div class="detail-block">
+          <span class="tick">{contact.labelAddress}</span>
+          <p>{siteData.address}</p>
+        </div>
+        <div class="detail-block">
+          <span class="tick">{contact.labelHours}</span>
+          <p style="white-space:pre-line">{site.hours}</p>
+        </div>
+        <div class="map-note">{contact.mapEmbedNote}</div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .lede { font-size: 1.1rem; color: var(--slate); max-width: 58ch; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+  }
+  @media (max-width: 780px) { .grid { grid-template-columns: 1fr; } }
+
+  .form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .form input,
+  .form textarea {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.75em 0.85em;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper-raised);
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .form input:focus,
+  .form textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+  }
+  .form button { align-self: flex-start; margin-top: 0.25rem; }
+  .fine { color: var(--slate); font-size: 0.85rem; margin: 0; }
+
+  .details { border-top: 1px solid var(--line); padding-top: 0.5rem; }
+  .detail-block { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .detail-block p { margin: 0.25rem 0 0; }
+  .map-note {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--slate);
+    background: var(--paper-raised);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    padding: 1rem;
+  }
+</style>

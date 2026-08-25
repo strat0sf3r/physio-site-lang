@@ -1,0 +1,195 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Decap commits directly to your git repo, so every edit is a git commit —
+# full history and rollback for free, no separate database.
+#
+# Bilingual content: each JSON file has a top-level "cs" and "en" object.
+# Rather than using Decap's built-in i18n plugin (which adds its own
+# conventions on top), the fields below just mirror that structure
+# directly — a "Czech" tab and an "English" tab per page, side by side.
+publish_mode: simple
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "site"
+    label: "Site Settings"
+    files:
+      - name: "settings"
+        label: "General Settings"
+        file: "src/data/site.json"
+        fields:
+          - { label: "Practice name (shown in both languages)", name: "practiceName", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Address", name: "address", widget: "string" }
+          - label: "Czech"
+            name: "cs"
+            widget: "object"
+            fields:
+              - { label: "Tagline (SEO description)", name: "tagline", widget: "text" }
+              - { label: "Hours", name: "hours", widget: "text" }
+          - label: "English"
+            name: "en"
+            widget: "object"
+            fields:
+              - { label: "Tagline (SEO description)", name: "tagline", widget: "text" }
+              - { label: "Hours", name: "hours", widget: "text" }
+
+  - name: "home"
+    label: "Home Page"
+    files:
+      - name: "home"
+        label: "Home Page Content"
+        file: "src/data/home.json"
+        fields:
+          - label: "Czech"
+            name: "cs"
+            widget: "object"
+            fields: &home_fields
+              - { label: "Hero eyebrow", name: "heroEyebrow", widget: "string" }
+              - { label: "Hero headline", name: "heroHeadline", widget: "string" }
+              - { label: "Hero body", name: "heroBody", widget: "text" }
+              - { label: "Hero button text", name: "heroCta", widget: "string" }
+              - label: "Stats row"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Value", name: "value", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+              - { label: "Process section title", name: "processTitle", widget: "string" }
+              - label: "Process steps"
+                name: "process"
+                widget: "list"
+                fields:
+                  - { label: "Angle marker (e.g. 0°)", name: "angle", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+              - { label: "Services section title", name: "servicesIntro", widget: "string" }
+          - label: "English"
+            name: "en"
+            widget: "object"
+            fields: *home_fields
+
+  - name: "about"
+    label: "About Page"
+    files:
+      - name: "about"
+        label: "About Page Content"
+        file: "src/data/about.json"
+        fields:
+          - label: "Czech"
+            name: "cs"
+            widget: "object"
+            fields: &about_fields
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
+              - label: "Therapist bio"
+                name: "bio"
+                widget: "object"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Credentials", name: "credentials", widget: "string" }
+                  - { label: "Photo alt text", name: "photoAlt", widget: "string" }
+                  - { label: "Bio text", name: "body", widget: "text" }
+              - label: "Values"
+                name: "values"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+          - label: "English"
+            name: "en"
+            widget: "object"
+            fields: *about_fields
+
+  - name: "contact"
+    label: "Contact Page"
+    files:
+      - name: "contact"
+        label: "Contact Page Content"
+        file: "src/data/contact.json"
+        fields:
+          - { label: "Form endpoint URL (Formspree, etc. — shared by both languages)", name: "formEndpoint", widget: "string" }
+          - label: "Czech"
+            name: "cs"
+            widget: "object"
+            fields: &contact_fields
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
+              - { label: "Form: name label", name: "formName", widget: "string" }
+              - { label: "Form: email label", name: "formEmail", widget: "string" }
+              - { label: "Form: phone label", name: "formPhone", widget: "string" }
+              - { label: "Form: message label", name: "formMessage", widget: "string" }
+              - { label: "Form: submit button", name: "formSubmit", widget: "string" }
+              - { label: "Form: note below button", name: "formNote", widget: "text" }
+              - { label: "Label: phone", name: "labelPhone", widget: "string" }
+              - { label: "Label: email", name: "labelEmail", widget: "string" }
+              - { label: "Label: address", name: "labelAddress", widget: "string" }
+              - { label: "Label: hours", name: "labelHours", widget: "string" }
+              - { label: "Map note", name: "mapEmbedNote", widget: "text" }
+          - label: "English"
+            name: "en"
+            widget: "object"
+            fields: *contact_fields
+
+  - name: "faq"
+    label: "FAQ Page"
+    files:
+      - name: "faq"
+        label: "FAQ Page Content"
+        file: "src/data/faq.json"
+        fields:
+          - label: "Czech"
+            name: "cs"
+            widget: "object"
+            fields: &faq_fields
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - label: "Questions"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Question", name: "q", widget: "string" }
+                  - { label: "Answer", name: "a", widget: "text" }
+          - label: "English"
+            name: "en"
+            widget: "object"
+            fields: *faq_fields
+
+  - name: "services"
+    label: "Services"
+    files:
+      - name: "services"
+        label: "All Services"
+        file: "src/data/services.json"
+        fields:
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Slug (used internally, no spaces)", name: "slug", widget: "string" }
+              - { label: "Display order", name: "order", widget: "number", default: 1 }
+              - { label: "Arc start angle", name: "angleFrom", widget: "number", default: 0 }
+              - { label: "Arc end angle (used in the 0°–X° label)", name: "angleTo", widget: "number", default: 90 }
+              - label: "Session length"
+                name: "duration"
+                widget: "object"
+                fields:
+                  - { label: "Czech", name: "cs", widget: "string", default: "45minutová sezení" }
+                  - { label: "English", name: "en", widget: "string", default: "45 min sessions" }
+              - label: "Czech"
+                name: "cs"
+                widget: "object"
+                fields: &service_fields
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Short summary (card + list view)", name: "summary", widget: "text" }
+                  - { label: "Full description", name: "body", widget: "text" }
+              - label: "English"
+                name: "en"
+                widget: "object"
+                fields: *service_fields

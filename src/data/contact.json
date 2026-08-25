@@ -1,0 +1,35 @@
+{
+  "formEndpoint": "https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID",
+  "cs": {
+    "eyebrow": "Ozvěte se nám",
+    "headline": "Objednejte se na vyšetření",
+    "intro": "Napište pár slov o tom, co vás trápí, a preferovaný termín — odpovíme do jednoho pracovního dne s volným termínem. Pokud je to naléhavé, zavolejte přímo na kliniku.",
+    "formName": "Jméno",
+    "formEmail": "E-mail",
+    "formPhone": "Telefon (nepovinné)",
+    "formMessage": "Co vás trápí a kdy se vám hodí?",
+    "formSubmit": "Odeslat poptávku",
+    "formNote": "Odpovídáme do jednoho pracovního dne. V naléhavých případech nám prosím zavolejte přímo.",
+    "labelPhone": "Telefon",
+    "labelEmail": "E-mail",
+    "labelAddress": "Adresa",
+    "labelHours": "Otevírací doba",
+    "mapEmbedNote": "Až bude potvrzená finální adresa, doplňte sem mapu Google Maps nebo statický obrázek mapy."
+  },
+  "en": {
+    "eyebrow": "Get in touch",
+    "headline": "Book an assessment",
+    "intro": "Send a few details about what's going on and preferred timing — we reply within one business day with a slot. If it's urgent, call the clinic directly.",
+    "formName": "Name",
+    "formEmail": "Email",
+    "formPhone": "Phone (optional)",
+    "formMessage": "What's going on, and when works for you?",
+    "formSubmit": "Send request",
+    "formNote": "We reply within one business day. For anything urgent, call the clinic directly.",
+    "labelPhone": "Phone",
+    "labelEmail": "Email",
+    "labelAddress": "Address",
+    "labelHours": "Hours",
+    "mapEmbedNote": "Add a Google Maps embed or a static map image here once you have the final address confirmed."
+  }
+}

@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Arc from '../Arc.astro';
+import servicesData from '../../data/services.json';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { routes } from '../../i18n/routes.js';
+
+interface Props {
+  lang: 'cs' | 'en';
+}
+
+const { lang } = Astro.props;
+const services = [...servicesData.services].sort((a, b) => a.order - b.order);
+const contactHref = getRelativeLocaleUrl(lang, routes.contact);
+
+const copy = {
+  cs: {
+    title: 'Služby',
+    eyebrow: 'Co léčíme',
+    lede: 'Každý plán začíná stejným vyšetřením. Liší se zátěž, tempo a protokol — viz níže.',
+    ctaTitle: 'Nejste si jistí, co sedí vašemu případu?',
+    ctaBtn: 'Zeptejte se před objednáním',
+  },
+  en: {
+    title: 'Services',
+    eyebrow: 'What we treat',
+    lede: "Every plan starts with the same assessment. What differs is the loading, pacing, and protocol — set out below.",
+    ctaTitle: 'Not sure which fits your case?',
+    ctaBtn: 'Ask before booking',
+  },
+}[lang];
+---
+
+<Layout lang={lang} title={copy.title} route="services">
+  <section class="intro">
+    <div class="container">
+      <span class="eyebrow">{copy.eyebrow}</span>
+      <h1>{copy.title}</h1>
+      <p class="lede">{copy.lede}</p>
+    </div>
+  </section>
+
+  <section class="list">
+    <div class="container">
+      {services.map((s) => (
+        <article class="row">
+          <div class="row-arc">
+            <Arc size={160} from={180} to={180 - s.angleTo} label={`0°–${s.angleTo}°`} />
+          </div>
+          <div class="row-copy">
+            <h2>{s[lang].title}</h2>
+            <p>{s[lang].summary}</p>
+            <p class="body-text">{s[lang].body}</p>
+            <span class="tick">{s.duration[lang]}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <h2>{copy.ctaTitle}</h2>
+      <a class="btn btn-primary" href={contactHref}>{copy.ctaBtn}</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .lede { font-size: 1.1rem; color: var(--slate); max-width: 58ch; }
+
+  .row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    padding: 2.75rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .row:first-child { border-top: none; }
+  .body-text { color: var(--slate); }
+  @media (max-width: 640px) {
+    .row { grid-template-columns: 1fr; }
+    .row-arc { max-width: 130px; }
+  }
+
+  .cta-band { background: var(--teal); color: var(--paper); }
+  .cta-band h2 { color: var(--paper); margin: 0; }
+  .cta-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1.5rem; flex-wrap: wrap;
+  }
+  .cta-band :global(.btn-primary) { background: var(--amber); color: var(--ink); }
+  .cta-band :global(.btn-primary:hover) { background: #C17A22; }
+</style>

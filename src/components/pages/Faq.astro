@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import faqData from '../../data/faq.json';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { routes } from '../../i18n/routes.js';
+
+interface Props {
+  lang: 'cs' | 'en';
+}
+
+const { lang } = Astro.props;
+const faq = faqData[lang];
+const contactHref = getRelativeLocaleUrl(lang, routes.contact);
+
+const copy = {
+  cs: { ctaTitle: 'Máte další otázku?', ctaBtn: 'Zeptejte se nás přímo' },
+  en: { ctaTitle: 'Still have a question?', ctaBtn: 'Ask us directly' },
+}[lang];
+---
+
+<Layout lang={lang} title={lang === 'cs' ? 'Časté dotazy' : 'FAQ'} description={faq.headline} route="faq">
+  <section class="intro">
+    <div class="container">
+      <span class="eyebrow">{faq.eyebrow}</span>
+      <h1>{faq.headline}</h1>
+    </div>
+  </section>
+
+  <section class="faq-list">
+    <div class="container">
+      {faq.items.map((item, i) => (
+        <details class="faq-item">
+          <summary>
+            <span class="tick">{String(i + 1).padStart(2, '0')}</span>
+            {item.q}
+          </summary>
+          <p>{item.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <h2>{copy.ctaTitle}</h2>
+      <a class="btn btn-primary" href={contactHref}>{copy.ctaBtn}</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .faq-item {
+    border-top: 1px solid var(--line);
+    padding: 1.5rem 0;
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-item summary {
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.05rem;
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    margin-left: auto;
+    color: var(--amber);
+    font-family: var(--font-mono);
+  }
+  .faq-item[open] summary::after { content: '–'; }
+  .faq-item p {
+    margin: 0.9rem 0 0 2.3rem;
+    color: var(--slate);
+  }
+
+  .cta-band { background: var(--teal); color: var(--paper); }
+  .cta-band h2 { color: var(--paper); margin: 0; }
+  .cta-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1.5rem; flex-wrap: wrap;
+  }
+  .cta-band :global(.btn-primary) { background: var(--amber); color: var(--ink); }
+  .cta-band :global(.btn-primary:hover) { background: #C17A22; }
+</style>

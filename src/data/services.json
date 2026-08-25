@@ -1,0 +1,64 @@
+{
+  "services": [
+    {
+      "slug": "sportovni-zraneni",
+      "duration": {
+        "cs": "45minutová sezení",
+        "en": "45 min sessions"
+      },
+      "angleFrom": 0,
+      "angleTo": 120,
+      "order": 1,
+      "cs": {
+        "title": "Rehabilitace sportovních zranění",
+        "summary": "Poranění vazů, šlach a svalů — plán návratu ke sportu postavený na vaší skutečné tréninkové zátěži, ne na obecném harmonogramu.",
+        "body": "Běžci, lezci, fotbalisté i víkendoví sportovci. Poraněnou stranu porovnáme se zdravou, postavíme na tom plán zátěže a upravujeme ho podle toho, jak se vrací síla — takže se do tréninku vracíte na základě dat, ne pevného počtu týdnů."
+      },
+      "en": {
+        "title": "Sports injury rehabilitation",
+        "summary": "Ligament, tendon, and muscle injuries — return-to-sport plans built around your actual training load, not a generic timeline.",
+        "body": "Runners, climbers, footballers, and weekend athletes. We test the injured side against the uninjured one, build a loading plan around it, and adjust as strength returns — so you go back to training on evidence, not on a fixed number of weeks."
+      }
+    },
+    {
+      "slug": "pooperacni-rekonvalescence",
+      "duration": {
+        "cs": "45minutová sezení",
+        "en": "45 min sessions"
+      },
+      "angleFrom": 0,
+      "angleTo": 180,
+      "order": 2,
+      "cs": {
+        "title": "Pooperační rekonvalescence",
+        "summary": "Strukturovaná rehabilitace po operaci kloubu nebo vazu, koordinovaná s protokolem vašeho chirurga.",
+        "body": "Pro operace kolena, ramene i kyčle. Postupujeme podle konkrétního pooperačního protokolu vašeho chirurga, sledujeme rozsah pohybu týden po týdnu proti očekávané křivce zotavení a případné zpoždění řešíme hned, ne až na kontrole v šestém týdnu."
+      },
+      "en": {
+        "title": "Post-surgical recovery",
+        "summary": "Structured rehabilitation after joint or ligament surgery, coordinated with your surgeon's protocol.",
+        "body": "For knee, shoulder, and hip procedures. We follow your surgeon's specific post-op protocol, track range of motion against the expected recovery curve week by week, and flag early if something's off pace — rather than at the six-week check-up."
+      }
+    },
+    {
+      "slug": "chronicka-bolest-pohyblivost",
+      "duration": {
+        "cs": "45minutová sezení",
+        "en": "45 min sessions"
+      },
+      "angleFrom": 0,
+      "angleTo": 90,
+      "order": 3,
+      "cs": {
+        "title": "Přetrvávající bolest a pohyblivost",
+        "summary": "Dlouhodobá bolest zad, krku nebo kloubů, která zcela neustoupila po odpočinku ani předchozí léčbě.",
+        "body": "Pro bolest, která trvá měsíce, ne dny. Začínáme delším vyšetřením, abychom oddělili skutečně omezenou tkáň od pohybových vzorců, které se kolem ní vytvořily, a pak stavíme plán zaměřený na funkci, ne jen na úlevu od příznaků."
+      },
+      "en": {
+        "title": "Persistent pain & mobility",
+        "summary": "Long-standing back, neck, or joint pain that hasn't fully resolved with rest or previous treatment.",
+        "body": "For pain that's been around for months, not days. We start with a longer assessment to separate the tissue that's actually restricted from the movement patterns that developed around it, then build a plan aimed at function, not just symptom relief."
+      }
+    }
+  ]
+}

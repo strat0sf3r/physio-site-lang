@@ -1,0 +1,86 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import aboutData from '../../data/about.json';
+
+interface Props {
+  lang: 'cs' | 'en';
+}
+
+const { lang } = Astro.props;
+const about = aboutData[lang];
+const title = lang === 'cs' ? 'O nás' : 'About';
+---
+
+<Layout lang={lang} title={title} description={about.intro} route="about">
+  <section class="intro">
+    <div class="container">
+      <span class="eyebrow">{about.eyebrow}</span>
+      <h1>{about.headline}</h1>
+      <p class="lede">{about.intro}</p>
+    </div>
+  </section>
+
+  <hr class="rule container-rule" />
+
+  <section class="bio">
+    <div class="container bio-grid">
+      <div class="bio-photo" role="img" aria-label={about.bio.photoAlt}>
+        <span class="tick">{lang === 'cs' ? 'foto' : 'photo'}</span>
+      </div>
+      <div>
+        <h2 class="bio-name">{about.bio.name}</h2>
+        <p class="tick credentials">{about.bio.credentials}</p>
+        <p>{about.bio.body}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="values">
+    <div class="container">
+      <h2>{lang === 'cs' ? 'Jak klinika funguje' : 'How the clinic works'}</h2>
+      <div class="values-grid">
+        {about.values.map((v) => (
+          <div class="value">
+            <h3>{v.title}</h3>
+            <p>{v.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .lede { font-size: 1.1rem; color: var(--slate); max-width: 58ch; }
+  .container-rule { max-width: 1120px; margin: 0 auto; }
+
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .bio-photo {
+    aspect-ratio: 3/4;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bio-name { margin-bottom: 0.2rem; }
+  .credentials { margin-bottom: 1rem; }
+  @media (max-width: 640px) {
+    .bio-grid { grid-template-columns: 1fr; }
+    .bio-photo { max-width: 220px; }
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+  @media (max-width: 780px) { .values-grid { grid-template-columns: 1fr; gap: 1.75rem; } }
+</style>
